@@ -1,0 +1,37 @@
+{
+	"name": "@bazo/js-translator",
+	"version": "1.0.0",
+	"description": "Translator for JS using Symfony translations",
+	"repository": "git@github.com:bazo/js-translator.git",
+	"author": "Martin Bažík <martin@bazo.sk>",
+	"license": "MIT",
+	"main": "lib/index.js",
+	"types": "lib/index.d.ts",
+	"dependencies": {
+		"intl-messageformat": "^9.3.6"
+	},
+	"devDependencies": {
+		"@types/jest": "^26.0.10",
+		"jest": "^26.4.2",
+		"prettier": "^2.1.1",
+		"ts-jest": "^26.3.0",
+		"typescript": "^4.0.2"
+	},
+	"prettier": {
+		"trailingComma": "es5",
+		"tabWidth": 4,
+		"semi": true,
+		"singleQuote": false,
+		"useTabs": true,
+		"printWidth": 120
+	},
+	"scripts": {
+		"test": "jest",
+		"build": "tsc",
+		"prepublish": "yarn build",
+		"pub": "yarn publish --access public"
+	},
+	"files": [
+		"lib/**/*"
+	]
+}
