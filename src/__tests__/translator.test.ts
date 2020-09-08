@@ -78,7 +78,8 @@ const translations = {
 		test2: "{what} v Slovencine",
 		test3: `{name}, mas {count, plural,
 			=0 {nula fotiek}
-			=1 {jednu fotku}
+			one {jednu fotku}
+			few {zopar fotenek}
 			other {{count} foteciek}
 		  }.`,
 		test4: `{count, plural,
@@ -113,15 +114,19 @@ const data = [
 		count: 1,
 		params: { name: "Martin" },
 	},
-
+	{
+		id: "test3",
+		en: "Martin, You have 2 photos.",
+		sk: "Martin, mas zopar fotenek.",
+		params: { count: 2, name: "Martin" },
+	},
 	{
 		id: "test3",
 		en: "Martin, You have 5 photos.",
 		sk: "Martin, mas 5 foteciek.",
 		count: 5,
-		params: { count: 5, name: "Martin" },
+		params: { name: "Martin" },
 	},
-
 	{
 		id: "test4",
 		en: "There are no apples.",
