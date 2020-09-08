@@ -25,6 +25,37 @@ describe("test", () => {
 	});
 });
 
+describe("welsh", () => {
+	const message = `{count, plural,
+		=0 {# cŵn cathod}
+		=1 {# ci gath}
+		=2 {# gi gath}
+		few {# chi cath}
+		many {# chi chath}
+		other {# ci cath}
+	  }`;
+
+	[
+		{ count: 0, expected: "0 cŵn cathod" },
+		{ count: 1, expected: "1 ci gath" },
+		{ count: 2, expected: "2 gi gath" },
+		{ count: 3, expected: "3 chi cath" },
+		{ count: 6, expected: "6 chi chath" },
+		{ count: 4, expected: "4 ci cath" },
+	].forEach(({ count, expected }) => {
+		test("message format with IntlMessageFormat", () => {
+			const trans = new IntlMessageFormat(message, "cy").format({ count });
+			expect(trans).toEqual(expected);
+		});
+
+		test("message format with Translator", () => {
+			const translator = new Translator("cy");
+			const trans = translator.translate(message, count);
+			expect(trans).toEqual(expected);
+		});
+	});
+});
+
 const langs = ["en", "sk"];
 
 const translations = {
@@ -50,7 +81,7 @@ const translations = {
 			=1 {jednu fotku}
 			other {{count} foteciek}
 		  }.`,
-		  test4: `{count, plural,
+		test4: `{count, plural,
 			=0 {Jablka nie su}
 			=1 {Je jedno jablko}
 			other {Je # jablk}
